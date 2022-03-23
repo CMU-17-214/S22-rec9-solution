@@ -19,7 +19,7 @@ import java.util.concurrent.Semaphore;
 
 public class Main {
     private static final int NUM_REQUESTS = 100;
-    private static final String URL_STR = "http://feature.isri.cmu.edu";
+    private static final String URL_STR = "http://feature.isri.cmu.edu:3003/";
     private static HttpClient client = HttpClient.newHttpClient();
 
     private static void runWebAPIRequest() throws IOException, InterruptedException {
@@ -67,7 +67,7 @@ public class Main {
         responseFuture.thenRun(() -> System.out.println("do other things after finished..."));
         System.out.println("do other things...");
         HttpResponse<String> response = responseFuture.join();
-//        System.out.println("The response is:" + response.body());
+        System.out.println("The response is:" + response.body());
 
         System.out.println("Total time single async (ms): " + Duration.between(start, Instant.now()).toMillis());
     }
